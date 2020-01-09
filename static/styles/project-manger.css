@@ -1,0 +1,81 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.project-manger {
+	margin: 20px;
+	font-family: serif, "Microsoft YaHei";
+}
+
+.cards {
+	display: flex;
+  justify-content: space-around;
+}
+
+.flex-card {
+  position: relative;
+	width: 23%;
+  height: 130px;
+	border-radius: 5px;
+  color: white;
+}
+
+.alltasks-card {
+	background-color: #31b48d;
+}
+
+.unsolved-card {
+	background-color: #38a112;
+}
+
+.processing-card {
+	background-color: #7538c7;
+}
+
+.solved-card {
+	background-color: #3b67a4;
+}
+
+
+.card-title {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+	font-size: 14px;
+}
+
+.card-count {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+.real-time {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.flex-card .iconfont {
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  opacity: 0.3;
+  font-size: 100px;
+}
+
+.card-percentage {
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  font-size: 32px;
+	font-weight: 500;
+	line-height: 20px;
+}
