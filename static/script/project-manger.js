@@ -15,7 +15,7 @@ let taskList = document.getElementById("task-list");
 let countStr = document.getElementsByClassName("card-count");
 let percentageStr = document.getElementsByClassName("card-percentage");
 
-function getItemsData() {
+(function getItemsData() {
 	ajax({
 		url: API_ROOT,
 		method: "GET",
@@ -24,7 +24,7 @@ function getItemsData() {
 			calculateTasksPercentage();
 		}
 	});
-}
+})();
 
 function addItems(task) {
 	task.forEach(item => {
@@ -34,7 +34,7 @@ function addItems(task) {
     <td><p class='description'>${item.description}</p></td>
     <td>${item.endTime}</td>
     <td class='${taskStatus}'>${item.status}</td>
-    <td><button class='delete-btn'>删除</button></td>
+    <td><button class='delete-btn' name='delete-btn'>删除</button></td>
     </tr>`;
 	});
 }
@@ -56,7 +56,6 @@ function statusColor(status) {
 	}
 }
 
-
 function calculateTasksPercentage() {
 	for (let i = 1; i < countStr.length; i++) {
 		let percentage = Math.round(
@@ -66,4 +65,3 @@ function calculateTasksPercentage() {
 	}
 }
 
-getItemsData();
