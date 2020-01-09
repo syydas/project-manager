@@ -149,3 +149,84 @@ td {
 .closed-task {
   color: #f7da47;
 }
+
+.confirm-page {
+  /*display: none;*/
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.point {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.confirm-box {
+  position: absolute;
+  width: 340px;
+  height: 180px;
+  left: -170px;
+  top: -90px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.icon-wenhao {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  font-size: 24px;
+  color: #F1C826;
+}
+
+.icon-guanbi {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+.prompt {
+  position: absolute;
+  top: 35px;
+  left: 60px;
+  line-height: 24px;
+  color: #333;
+  font-size: 20px;
+}
+
+.confirm-box p {
+  position: absolute;;
+  top: 65px;
+  left: 60px;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+.confirm-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 90px;
+  height: 35px;
+  width: 60px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #3080FE;
+}
+
+.cancel-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 35px;
+  width: 60px;
+  border-radius: 5px;
+  outline: none;
+}
