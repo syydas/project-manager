@@ -86,20 +86,21 @@
 }
 
 .item-list {
-  position: absolute;
-  width: calc(100% - 40px);
-  border-collapse: collapse;
-  border-bottom: 1px solid #dcdee3;
-  font-size: 20px;
-  font-weight: 700;
+	position: absolute;
+	width: calc(100% - 40px);
+	border-collapse: collapse;
+	border-bottom: 1px solid #dcdee3;
+	font-size: 20px;
+	font-weight: 700;
 	color: #333;
 }
 
 .list-head {
-  line-height: 50px;
+	line-height: 50px;
 	background: #ebecf0;
 }
 
 td {
-  padding-left: 20px;
+	padding-left: 20px;
 }
+

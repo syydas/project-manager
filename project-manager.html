@@ -2,9 +2,10 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>project-manager</title>
-		<link rel="stylesheet" href="static/styles/project-manger.css" />
-		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" href="./static/styles/project-manger.css" />
+		<link rel="stylesheet" type="text/css" href="./iconfont/iconfont.css" />
 	</head>
 
 	<body>
@@ -19,38 +20,41 @@
 				<div class="flex-card unsolved-card">
 					<div class="card-title">未解决</div>
 					<div class="card-count">2,305</div>
-          <div class="real-time">实时</div>
-          <div class="card-percentage">60%</div>
+					<div class="real-time">实时</div>
+					<div class="card-percentage">60%</div>
 					<span class="iconfont icon-weijiejue"></span>
 				</div>
 				<div class="flex-card processing-card">
 					<div class="card-title">处理中</div>
 					<div class="card-count">384</div>
-          <div class="real-time">实时</div>
-          <div class="card-percentage">10%</div>
+					<div class="real-time">实时</div>
+					<div class="card-percentage">10%</div>
 					<span class="iconfont icon-loudou"></span>
 				</div>
 				<div class="flex-card solved-card">
 					<div class="card-title">已解决</div>
 					<div class="card-count">1,152</div>
-          <div class="real-time">实时</div>
-          <div class="card-percentage">30%</div>
+					<div class="real-time">实时</div>
+					<div class="card-percentage">30%</div>
 					<span class="iconfont icon-yijiejue2"></span>
 				</div>
-      </div>
-      <div class="list-title">项目列表</div>
-      <table class="item-list">
-        <thead class="list-head">
-          <tr>
-            <td>项目名称</td>
-            <td>项目描述</td>
-            <td>截止时间</td>
-            <td>状态</td>
-            <td>操作</td>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+			</div>
+			<div class="list-title">项目列表</div>
+			<table class="item-list">
+				<thead class="list-head">
+					<tr>
+						<td>项目名称</td>
+						<td>项目描述</td>
+						<td>截止时间</td>
+						<td>状态</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody id = "task-list">
+				</tbody>
+			</table>
 		</div>
+
+		<script src="./static/script/project-manger.js"></script>
 	</body>
 </html>
