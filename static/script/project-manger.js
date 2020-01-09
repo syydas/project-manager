@@ -11,13 +11,12 @@ window.ajax = function(options) {
 };
 
 const API_ROOT = "http://localhost:3000/projects";
-let taskList = document.getElementById('task-list');
-
+let taskList = document.getElementById("task-list");
 
 function getItemsData() {
 	ajax({
 		url: API_ROOT,
-    method: "GET", 
+		method: "GET",
 		success: function(result) {
 			addItems(result);
 		}
@@ -26,14 +25,31 @@ function getItemsData() {
 
 function addItems(task) {
 	task.forEach(item => {
+		const taskStatus = statusColor(item.status);
 		taskList.innerHTML += `<tr>
     <td>${item.name}</td>
     <td><p class='description'>${item.description}</p></td>
     <td>${item.endTime}</td>
-    <td>${item.status}</td>
+    <td class='${taskStatus}'>${item.status}</td>
     <td><button class='delete-btn'>删除</button></td>
     </tr>`;
-  });
+	});
+}
+
+function statusColor(status) {
+	switch (status) {
+		case "ACTIVE":
+			return "active-task";
+			break;
+		case "PENDING":
+			return "pending-task";
+			break;
+		case "CLOSED":
+			return "closed-task";
+			break;
+		default:
+			break;
+	}
 }
 
 getItemsData();

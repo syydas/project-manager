@@ -88,19 +88,64 @@
 .item-list {
 	position: absolute;
 	width: calc(100% - 40px);
+	table-layout: fixed;
 	border-collapse: collapse;
-	border-bottom: 1px solid #dcdee3;
 	font-size: 20px;
 	font-weight: 700;
 	color: #333;
 }
 
 .list-head {
-	line-height: 50px;
 	background: #ebecf0;
 }
 
-td {
-	padding-left: 20px;
+tr {
+  border-bottom: 1px solid #dcdee3;
 }
 
+td {
+	padding: 20px;
+}
+
+.item-name {
+  width: 250px;
+}
+
+.item-description {
+  width: 450px;
+}
+
+.description {
+  display: -webkit-box;
+	width: 95%;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+.description:hover {
+  display: block;
+}
+
+.delete-btn {
+  height: 30px;
+  width: 50px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ee706d;
+  color: white;
+}
+
+.active-task {
+  color: #666666;
+}
+
+.pending-task {
+  color: #ee706d;
+}
+
+.closed-task {
+  color: #f7da47;
+}
