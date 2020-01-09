@@ -10,15 +10,15 @@
 
 .cards {
 	display: flex;
-  justify-content: space-around;
+	justify-content: space-around;
 }
 
 .flex-card {
-  position: relative;
+	position: relative;
 	width: 23%;
-  height: 130px;
+	height: 130px;
 	border-radius: 5px;
-  color: white;
+	color: white;
 }
 
 .alltasks-card {
@@ -37,45 +37,69 @@
 	background-color: #3b67a4;
 }
 
-
 .card-title {
-  position: absolute;
-  top: 30px;
-  left: 20px;
+	position: absolute;
+	top: 30px;
+	left: 20px;
 	font-size: 14px;
 }
 
 .card-count {
-  position: absolute;
-  bottom: 40px;
-  left: 20px;
+	position: absolute;
+	bottom: 40px;
+	left: 20px;
 	font-size: 32px;
 	font-weight: 500;
 	line-height: 20px;
 }
 
 .real-time {
-  position: absolute;
-  top: 25px;
-  right: 20px;
-  padding: 3px;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.3);
+	position: absolute;
+	top: 25px;
+	right: 20px;
+	padding: 3px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.3);
 }
 
 .flex-card .iconfont {
-  position: absolute;
-  top: 14px;
-  right: 15px;
-  opacity: 0.3;
-  font-size: 100px;
+	position: absolute;
+	top: 14px;
+	right: 15px;
+	opacity: 0.3;
+	font-size: 100px;
 }
 
 .card-percentage {
-  position: absolute;
-  bottom: 40px;
-  right: 20px;
-  font-size: 32px;
+	position: absolute;
+	bottom: 40px;
+	right: 20px;
+	font-size: 32px;
 	font-weight: 500;
 	line-height: 20px;
+}
+
+.list-title {
+	margin: 40px 0 40px;
+	font-size: 30px;
+	font-weight: 900;
+}
+
+.item-list {
+  position: absolute;
+  width: calc(100% - 40px);
+  border-collapse: collapse;
+  border-bottom: 1px solid #dcdee3;
+  font-size: 20px;
+  font-weight: 700;
+	color: #333;
+}
+
+.list-head {
+  line-height: 50px;
+	background: #ebecf0;
+}
+
+td {
+  padding-left: 20px;
 }
