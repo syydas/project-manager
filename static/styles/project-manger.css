@@ -108,11 +108,11 @@ td {
 }
 
 .item-name {
-  width: 250px;
+  width: 25%;
 }
 
 .item-description {
-  width: 450px;
+  width: 45%;
 }
 
 .description {

@@ -1,30 +1,20 @@
-window.ajax = function(options) {
-	let xhr = new XMLHttpRequest();
-	let method = options.method;
-	xhr.onreadystatechange = function() {
-		if (4 === xhr.readyState && 200 === xhr.status) {
-			options.success(JSON.parse(xhr.responseText));
-		}
-	};
-	xhr.open(method, options.url, true);
-	xhr.send();
-};
-
 const API_ROOT = "http://localhost:3000/projects";
 let taskList = document.getElementById("task-list");
 let countStr = document.getElementsByClassName("card-count");
 let percentageStr = document.getElementsByClassName("card-percentage");
 
-(function getItemsData() {
-	ajax({
+getItemsData();
+function getItemsData() {
+  let option = {
 		url: API_ROOT,
 		method: "GET",
 		success: function(result) {
 			addItems(result);
 			calculateTasksPercentage();
 		}
-	});
-})();
+	};
+	ajax(option);
+}
 
 function addItems(task) {
 	task.forEach(item => {
@@ -78,8 +68,8 @@ function popUps(id) {
 				confirmPage.style.display = "none";
 				break;
 			case "confirm-btn":
-        //deleteTask(id);
-        confirmPage.style.display = "none";
+				deleteItemsData(id);
+				confirmPage.style.display = "none";
 				break;
 			default:
 				break;
@@ -87,4 +77,17 @@ function popUps(id) {
 	});
 }
 
+function deleteItemsData(id) {
+	ajax({
+		url: API_ROOT,
+		method: "POST",
+		data: { id: id },
+		dataType: "JSON",
+		success: function(data) {
+			deleteItems(data);
+			//calculateTasksPercentage();
+		}
+	});
+}
 
+function deleteItems(task) {}
