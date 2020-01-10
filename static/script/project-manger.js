@@ -3,9 +3,8 @@ let taskList = document.getElementById("task-list");
 let countStr = document.getElementsByClassName("card-count");
 let percentageStr = document.getElementsByClassName("card-percentage");
 
-getItemsData();
 function getItemsData() {
-  let option = {
+	let options = {
 		url: API_ROOT,
 		method: "GET",
 		success: function(result) {
@@ -13,13 +12,13 @@ function getItemsData() {
 			calculateTasksPercentage();
 		}
 	};
-	ajax(option);
+	ajax(options);
 }
 
 function addItems(task) {
 	task.forEach(item => {
 		const taskStatus = statusColor(item.status);
-		taskList.innerHTML += `<tr>
+		taskList.innerHTML += `<tr id='${item.id}'>
     <td>${item.name}</td>
     <td><p class='description'>${item.description}</p></td>
     <td>${item.endTime}</td>
@@ -30,16 +29,20 @@ function addItems(task) {
 }
 
 function statusColor(status) {
-	countStr[0].innerHTML = Number(countStr[0].innerHTML) + 1;
+	let allTasks = Number(countStr[0].innerHTML);
+	let activeTasks = Number(countStr[1].innerHTML);
+	let pendingTasks = Number(countStr[2].innerHTML);
+	let closedTasks = Number(countStr[3].innerHTML);
+	countStr[0].innerHTML = allTasks + 1;
 	switch (status) {
 		case "ACTIVE":
-			countStr[1].innerHTML = Number(countStr[1].innerHTML) + 1;
+			countStr[1].innerHTML = activeTasks + 1;
 			return "active-task";
 		case "PENDING":
-			countStr[2].innerHTML = Number(countStr[2].innerHTML) + 1;
+			countStr[2].innerHTML = pendingTasks + 1;
 			return "pending-task";
 		case "CLOSED":
-			countStr[3].innerHTML = Number(countStr[3].innerHTML) + 1;
+			countStr[3].innerHTML = closedTasks + 1;
 			return "closed-task";
 		default:
 			break;
@@ -49,7 +52,7 @@ function statusColor(status) {
 function calculateTasksPercentage() {
 	for (let i = 1; i < countStr.length; i++) {
 		let percentage =
-			Number(countStr[i].innerHTML / countStr[0].innerHTML) * 100;
+			Math.round(Number(countStr[i].innerHTML / countStr[0].innerHTML) * 100);
 		percentageStr[i - 1].innerHTML = percentage + "%";
 	}
 }
@@ -78,16 +81,37 @@ function popUps(id) {
 }
 
 function deleteItemsData(id) {
-	ajax({
-		url: API_ROOT,
-		method: "POST",
-		data: { id: id },
-		dataType: "JSON",
-		success: function(data) {
-			deleteItems(data);
-			//calculateTasksPercentage();
+	let options = {
+		url: API_ROOT + "/" + id,
+		method: "DELETE",
+		success: function() {
+			deleteItems(id);
+			calculateTasksPercentage();
 		}
-	});
+	};
+	ajax(options);
 }
 
-function deleteItems(task) {}
+function deleteItems(id) {
+  let allTasks = document.getElementById("task-list");
+  let removeTask = document.getElementById(id);
+  let status = removeTask.children[3].innerHTML;
+  console.log(removeTask.children[3]);
+  allTasks.removeChild(removeTask);
+  countStr[0].innerHTML = Number(countStr[0].innerHTML) - 1;
+  switch (status) {
+		case "ACTIVE":
+      countStr[1].innerHTML = Number(countStr[1].innerHTML) - 1;
+      break;
+		case "PENDING":
+      countStr[2].innerHTML = Number(countStr[2].innerHTML) - 1;
+      break;
+		case "CLOSED":
+      countStr[3].innerHTML = Number(countStr[3].innerHTML) - 1;
+      break;
+		default:
+			break;
+	}
+}
+
+getItemsData();
