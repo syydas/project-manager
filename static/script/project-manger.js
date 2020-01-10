@@ -34,7 +34,7 @@ function addItems(task) {
     <td><p class='description'>${item.description}</p></td>
     <td>${item.endTime}</td>
     <td class='${taskStatus}'>${item.status}</td>
-    <td><button class='delete-btn' name='delete-btn'>删除</button></td>
+    <td><button class='delete-btn'>删除</button></td>
     </tr>`;
 	});
 }
@@ -43,13 +43,13 @@ function statusColor(status) {
 	countStr[0].innerHTML = Number(countStr[0].innerHTML) + 1;
 	switch (status) {
 		case "ACTIVE":
-      countStr[1].innerHTML = Number(countStr[1].innerHTML) + 1;
+			countStr[1].innerHTML = Number(countStr[1].innerHTML) + 1;
 			return "active-task";
 		case "PENDING":
-      countStr[2].innerHTML = Number(countStr[2].innerHTML) + 1;
+			countStr[2].innerHTML = Number(countStr[2].innerHTML) + 1;
 			return "pending-task";
 		case "CLOSED":
-      countStr[3].innerHTML = Number(countStr[3].innerHTML) + 1;
+			countStr[3].innerHTML = Number(countStr[3].innerHTML) + 1;
 			return "closed-task";
 		default:
 			break;
@@ -58,10 +58,23 @@ function statusColor(status) {
 
 function calculateTasksPercentage() {
 	for (let i = 1; i < countStr.length; i++) {
-		let percentage = Math.round(
-			(Number(countStr[i].innerHTML) * 100) / Number(countStr[0].innerHTML)
-		);
+		let percentage =
+			Number(countStr[i].innerHTML / countStr[0].innerHTML) * 100;
 		percentageStr[i - 1].innerHTML = percentage + "%";
 	}
 }
 
+window.addEventListener("click", function(event) {
+	let operate = event.target;
+	let name = operate.className;
+	switch (name) {
+		case "delete-btn":
+			popUps();
+			break;
+	}
+});
+
+function popUps() {
+	let confirmPage = document.getElementsByClassName("confirm-page")[0];
+	confirmPage.style.display = "block";
+}
