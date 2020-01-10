@@ -24,8 +24,8 @@ function addItems(task) {
     <td class='${taskStatus}'>${item.status}</td>
     <td><button class='delete-btn' onclick='popUps(${item.id})'>删除</button></td>
     </tr>`;
-  });
-  calculateTasksPercentage();
+	});
+	calculateTasksPercentage();
 }
 
 function statusChange(status) {
@@ -51,8 +51,9 @@ function statusChange(status) {
 
 function calculateTasksPercentage() {
 	for (let i = 1; i < countStr.length; i++) {
-		let percentage =
-			Math.round(Number(countStr[i].innerHTML / countStr[0].innerHTML) * 100);
+		let percentage = Math.round(
+			Number(countStr[i].innerHTML / countStr[0].innerHTML) * 100
+		);
 		percentageStr[i - 1].innerHTML = percentage + "%";
 	}
 }
@@ -86,32 +87,35 @@ function deleteItemsData(id) {
 		method: "DELETE",
 		success: function() {
 			deleteItems(id);
-			
 		}
 	};
 	ajax(options);
 }
 
 function deleteItems(id) {
-  let allTasks = document.getElementById("task-list");
-  let removeTask = document.getElementById(id);
-  let status = removeTask.children[3].innerHTML;
-  allTasks.removeChild(removeTask);
-  countStr[0].innerHTML = Number(countStr[0].innerHTML) - 1;
-  switch (status) {
+	let allTasks = document.getElementById("task-list");
+	let removeTask = document.getElementById(id);
+	let status = removeTask.children[3].innerHTML;
+	allTasks.removeChild(removeTask);
+	deleteTaskNum(status);
+	calculateTasksPercentage();
+}
+
+function deleteTaskNum(status) {
+	countStr[0].innerHTML = Number(countStr[0].innerHTML) - 1;
+	switch (status) {
 		case "ACTIVE":
-      countStr[1].innerHTML = Number(countStr[1].innerHTML) - 1;
-      break;
+			countStr[1].innerHTML = Number(countStr[1].innerHTML) - 1;
+			break;
 		case "PENDING":
-      countStr[2].innerHTML = Number(countStr[2].innerHTML) - 1;
-      break;
+			countStr[2].innerHTML = Number(countStr[2].innerHTML) - 1;
+			break;
 		case "CLOSED":
-      countStr[3].innerHTML = Number(countStr[3].innerHTML) - 1;
-      break;
+			countStr[3].innerHTML = Number(countStr[3].innerHTML) - 1;
+			break;
 		default:
 			break;
-  }
-  calculateTasksPercentage();
+	}
 }
 
 getItemsData();

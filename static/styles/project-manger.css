@@ -10,7 +10,7 @@
 
 .cards {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 
 .flex-card {
@@ -161,18 +161,14 @@ td {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.point {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-}
-
 .confirm-box {
   position: absolute;
   width: 340px;
   height: 180px;
-  left: -170px;
-  top: -90px;
+  left: 50%;
+  top: 50%;
+  margin-left: -170px;
+  margin-top: -90px;
   border-radius: 5px;
   background-color: white;
 }
