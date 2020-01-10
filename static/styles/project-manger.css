@@ -134,6 +134,7 @@ td {
   width: 50px;
   border: none;
   border-radius: 5px;
+  outline: none;
   background-color: #ee706d;
   color: white;
 }
@@ -216,6 +217,7 @@ td {
   right: 90px;
   height: 35px;
   width: 60px;
+  border: none;
   border-radius: 5px;
   outline: none;
   background-color: #3080FE;

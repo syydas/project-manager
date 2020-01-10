@@ -9,7 +9,6 @@ function getItemsData() {
 		method: "GET",
 		success: function(result) {
 			addItems(result);
-			calculateTasksPercentage();
 		}
 	};
 	ajax(options);
@@ -17,7 +16,7 @@ function getItemsData() {
 
 function addItems(task) {
 	task.forEach(item => {
-		const taskStatus = statusColor(item.status);
+		const taskStatus = statusChange(item.status);
 		taskList.innerHTML += `<tr id='${item.id}'>
     <td>${item.name}</td>
     <td><p class='description'>${item.description}</p></td>
@@ -25,10 +24,11 @@ function addItems(task) {
     <td class='${taskStatus}'>${item.status}</td>
     <td><button class='delete-btn' onclick='popUps(${item.id})'>删除</button></td>
     </tr>`;
-	});
+  });
+  calculateTasksPercentage();
 }
 
-function statusColor(status) {
+function statusChange(status) {
 	let allTasks = Number(countStr[0].innerHTML);
 	let activeTasks = Number(countStr[1].innerHTML);
 	let pendingTasks = Number(countStr[2].innerHTML);
@@ -86,7 +86,7 @@ function deleteItemsData(id) {
 		method: "DELETE",
 		success: function() {
 			deleteItems(id);
-			calculateTasksPercentage();
+			
 		}
 	};
 	ajax(options);
@@ -96,7 +96,6 @@ function deleteItems(id) {
   let allTasks = document.getElementById("task-list");
   let removeTask = document.getElementById(id);
   let status = removeTask.children[3].innerHTML;
-  console.log(removeTask.children[3]);
   allTasks.removeChild(removeTask);
   countStr[0].innerHTML = Number(countStr[0].innerHTML) - 1;
   switch (status) {
@@ -111,7 +110,8 @@ function deleteItems(id) {
       break;
 		default:
 			break;
-	}
+  }
+  calculateTasksPercentage();
 }
 
 getItemsData();
