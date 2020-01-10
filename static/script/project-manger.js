@@ -34,7 +34,7 @@ function addItems(task) {
     <td><p class='description'>${item.description}</p></td>
     <td>${item.endTime}</td>
     <td class='${taskStatus}'>${item.status}</td>
-    <td><button class='delete-btn'>删除</button></td>
+    <td><button class='delete-btn' onclick='popUps(${item.id})'>删除</button></td>
     </tr>`;
 	});
 }
@@ -64,17 +64,27 @@ function calculateTasksPercentage() {
 	}
 }
 
-window.addEventListener("click", function(event) {
-	let operate = event.target;
-	let name = operate.className;
-	switch (name) {
-		case "delete-btn":
-			popUps();
-			break;
-	}
-});
-
-function popUps() {
+function popUps(id) {
 	let confirmPage = document.getElementsByClassName("confirm-page")[0];
 	confirmPage.style.display = "block";
+	confirmPage.addEventListener("click", function(event) {
+		let operate = event.target;
+		let name = operate.className;
+		switch (name) {
+			case "cancel-btn":
+				confirmPage.style.display = "none";
+				break;
+			case "iconfont icon-guanbi":
+				confirmPage.style.display = "none";
+				break;
+			case "confirm-btn":
+        //deleteTask(id);
+        confirmPage.style.display = "none";
+				break;
+			default:
+				break;
+		}
+	});
 }
+
+
